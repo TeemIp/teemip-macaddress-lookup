@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'teemip-macaddress-lookup/1.0.1',
+	'teemip-macaddress-lookup/2.0.0',
 	array(
 		// Identification
 		//
@@ -16,7 +16,7 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'teemip-ip-mgmt/2.6.1',
+			'teemip-ip-mgmt/2.7.0',
 		),
 		'mandatory' => false,
 		'visible' => true,
@@ -24,13 +24,14 @@ SetupWebPage::AddModule(
 		// Components
 		//
 		'datamodel' => array(
-			'src/Hook/MacAddressLookupExtraMenus.php',
+			'vendor/autoload.php',
+			'src/Controller/MacLookupController.php',
+			'src/Hook/MacLookupOtherActions.php',
+			'src/Service/MacLookupReport.php',
 			'model.teemip-macaddress-lookup.php',
 		),
-		'data.struct' => array(
-		),
-		'data.sample' => array(
-		),
+		'data.struct' => array(),
+		'data.sample' => array(),
 
 		// Documentation
 		//
@@ -39,7 +40,6 @@ SetupWebPage::AddModule(
 
 		// Default settings
 		//
-		'settings' => array(
-		),
+		'settings' => array(),
 	)
 );

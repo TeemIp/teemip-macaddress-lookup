@@ -2,9 +2,9 @@
 <itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.7">
     <menus>
         <menu id="MACLookup" xsi:type="WebPageMenuNode" _delta="define">>
-            <rank>10</rank>
+            <rank>30</rank>
             <parent>IPTools</parent>
-            <url>$pages/exec.php?exec_module=teemip-macaddress-lookup&amp;exec_page=ui.teemip-macaddress-lookup.php&amp;c[menu]=MacLookup&amp;operation=maclookup</url>
+            <url>$pages/exec.php?exec_module=teemip-macaddress-lookup&amp;exec_page=index.php&amp;c[menu]=MacLookup</url>
         </menu>
     </menus>
 </itop_design>
