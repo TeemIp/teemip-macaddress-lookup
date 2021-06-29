@@ -1,0 +1,12 @@
+{# @copyright   Copyright (C) 2021 TeemIp #}
+{# @license     http://opensource.org/licenses/AGPL-3.0 #}
+
+$('#{{ aAddressVal['input_id'] }}').on('validate keyup change', function(evt, sFormId) {
+		return ValidateField('{{ aAddressVal['input_id'] }}', '{{ aAddressVal['pattern'] }}', false, sFormId, '', undefined)
+	}
+);
+
+$('#{{ aPrefixVal['input_id'] }}').on('validate keyup change', function(evt, sFormId) {
+		return ValidateField('{{ aPrefixVal['input_id'] }}', '{{ aPrefixVal['pattern'] }}', false, sFormId, '', undefined)
+	}
+);

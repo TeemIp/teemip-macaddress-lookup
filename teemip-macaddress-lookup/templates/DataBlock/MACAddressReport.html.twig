@@ -1,0 +1,94 @@
+{# @copyright   Copyright (C) 2021 TeemIp #}
+{# @license     http://opensource.org/licenses/AGPL-3.0 #}
+
+{% UIContentBlock Standard {} %}
+	{% UIFieldSet Standard {'sLegend':aMACResults.sMACReportTitle} %}
+
+		{% if aMACResults.aMACReport %}
+			{% if aMACResults.aMACReport['success'] %}
+				{% if aMACResults.aMACReport['found'] %}
+
+					{% UIMultiColumn Standard {} %}
+						{% UIColumn Standard {} %}
+							{% if aMACResults.bMACAddress %}
+								{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:MACPrefix'|dict_s} %}
+									{{ aMACResults.aMACReport['macPrefix'] }}
+								{% EndUIField %}
+							{% endif %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:BlockStart'|dict_s} %}
+								{{ aMACResults.aMACReport['blockStart'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:BlockEnd'|dict_s} %}
+								{{ aMACResults.aMACReport['blockEnd'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:BlockSize'|dict_s} %}
+								{{ aMACResults.aMACReport['blockSize'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:BlockType'|dict_s} %}
+								{{ aMACResults.aMACReport['blockType'] }}
+							{% EndUIField %}
+						{% EndUIColumn %}
+						{% UIColumn Standard {} %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:Company'|dict_s} %}
+								{{ aMACResults.aMACReport['company'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:Address'|dict_s} %}
+								{{ aMACResults.aMACReport['address'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:Country'|dict_s} %}
+								{{ aMACResults.aMACReport['country'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:Updated'|dict_s} %}
+								{{ aMACResults.aMACReport['updated'] }}
+							{% EndUIField %}
+							{% if aMACResults.aMACReport['isrand'] %}
+								{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:IsRand'|dict_s} %}
+								{% EndUIField %}
+							{% endif %}
+							{% if aMACResults.aMACReport['isprivate'] %}
+								{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:IsPrivate'|dict_s} %}
+								{% EndUIField %}
+							{% endif %}
+						{% EndUIColumn %}
+					{% EndUIMultiColumn %}
+
+				{% else %}
+
+					{% UIAlert ForWarning {} %}
+						{% UIContentBlock Standard {} %}
+							{{ 'UI:MACLookup:Action:DoLookup:Result:NoMACAddressFound'|dict_s }}
+						{% EndUIContentBlock %}
+					{% EndUIAlert %}
+
+				{% endif %}
+			{% else %}
+
+					{% UIAlert ForFailure {} %}
+						{% UIContentBlock Standard {} %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:Error'|dict_s} %}
+								{{ aMACResults.aMACReport['error'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:ErrorCode'|dict_s} %}
+								{{ aMACResults.aMACReport['errorCode'] }}
+							{% EndUIField %}
+							{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:Result:MoreInfo'|dict_s} %}
+								{{ aMACResults.aMACReport['moreInfo'] }}
+							{% EndUIField %}
+						{% EndUIContentBlock %}
+					{% EndUIAlert %}
+
+			{% endif %}
+		{% else %}
+
+			{% UIAlert ForFailure {} %}
+				{% UIContentBlock Standard {} %}
+					{% UIField Standard {'sLabel':'UI:MACLookup:Action:DoLookup:HasError'|dict_s} %}
+						{{ sResponse }}
+					{% EndUIField %}
+				{% EndUIContentBlock %}
+			{% EndUIAlert %}
+
+		{% endif %}
+
+	{% EndUIFieldSet %}
+{% EndUIContentBlock %}

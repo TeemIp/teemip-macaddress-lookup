@@ -1,0 +1,28 @@
+{# @copyright   Copyright (C) 2021 TeemIp #}
+{# @license     http://opensource.org/licenses/AGPL-3.0 #}
+{% apply spaceless %}
+
+{% UIContentBlock Standard {} %}
+
+	{% if bIssue %}
+
+		{% UIAlert ForFailure {} %}
+			{% UIContentBlock Standard {} %}
+				{{ sMessage }}
+			{% EndUIContentBlock %}
+		{% EndUIAlert %}
+
+	{%  endif %}
+
+	{% UIPanel Neutral {'sClass':sClass, 'sTitle':'UI:MACLookup:Action:DoLookup:Result'|dict_s, 'sSubTitle':'' } %}
+		{% for sMACAddress, aMACResults in aResults %}
+
+			{% include 'DataBlock/MACAddressReport.html.twig' %}
+
+		{% endfor %}
+	{% EndUIPanel %}
+
+
+{% EndUIContentBlock %}
+
+{% endapply %}

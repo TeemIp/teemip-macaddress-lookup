@@ -1,0 +1,20 @@
+{# @copyright   Copyright (C) 2021 TeemIp #}
+{# @license     http://opensource.org/licenses/AGPL-3.0 #}
+
+{% UIContentBlock Standard {} %}
+	{% UIFieldSet Standard {'sLegend':'UI:MACLookup:Action:Lookup:Helper'|dict_s} %}
+		{% UIInput ForHidden {'sName':'operation', 'sValue':'DoMACAddressLookup'} %}
+		{% UIInput ForHidden {'sName':'transaction_id', 'sValue':sTransactionId} %}
+
+		{% UIContentBlock Standard {'aContainerClasses':['ibo-field']} %}
+			{% UIField Small {'sLabel':aAddressVal['label'], 'sValueHtml':aAddressVal['value']} %}{% EndUIField %}
+		{% EndUIContentBlock %}
+		{% UIContentBlock Standard {'aContainerClasses':['ibo-field']} %}
+			{% UIField Small {'sLabel':aPrefixVal['label'], 'sValueHtml':aPrefixVal['value']} %}{% EndUIField %}
+		{% EndUIContentBlock %}
+		{% UIContentBlock Standard {'aContainerClasses':['ibo-field']} %}
+			{% UIButton ForPrimaryAction {'sLabel':'UI:Button:Apply'|dict_s, 'bIsSubmit':true} %}
+		{% EndUIContentBlock %}
+
+	{% EndUIFieldSet %}
+{% EndUIContentBlock %}
