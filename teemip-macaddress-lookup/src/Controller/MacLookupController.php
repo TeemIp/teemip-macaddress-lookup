@@ -23,14 +23,14 @@ class MacLookupController extends Controller {
 	private function GetActionFieldsForOperation() {
 		$aParams = array();
 
-		$iFormid = rand();
+		$iFormId = rand();
 		$sHelpText = '';
 		$sDisplayValueForHtml = utils::EscapeHtml('');
 
 		// MAC Address
 		$sAttCode = 'macaddress';
 		$sAttLabel = Dict::S('UI:MACLookup:Action:Lookup:SelectMACAddress');
-		$sInputId = $iFormid.'_'.$sAttCode;
+		$sInputId = $iFormId.'_'.$sAttCode;
 		$oAttDef = MetaModel::GetAttributeDef('IPInterface', $sAttCode);
 		$iFieldSize = $oAttDef->GetMaxSize();
 		$sPattern = addslashes($oAttDef->GetValidationPattern()); //'^([0-9]+)$';
@@ -54,7 +54,7 @@ HTML;
 		// MAC Prefix
 		$sAttCode = 'macprefix';
 		$sAttLabel = Dict::S('UI:MACLookup:Action:Lookup:SelectMACPrefix');
-		$sInputId = $iFormid.'_'.$sAttCode;
+		$sInputId = $iFormId.'_'.$sAttCode;
 		$iFieldSize = 17;
 		$sPattern = addslashes('^(\d|([a-f]|[A-F])){6}$'); //'^([0-9]+)$';
 		$sValidationSpan = "<span class=\"form_validation ibo-field-validation\" id=\"v_{$sInputId}\"></span>";
