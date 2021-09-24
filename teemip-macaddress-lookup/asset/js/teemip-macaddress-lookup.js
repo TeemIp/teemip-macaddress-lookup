@@ -7,7 +7,7 @@
  *  These are normally loaded trough a $oPage->add_dict_entry() in cmdbabstract class
  */
 var aTeemIpDictEntries = {
-	"UI:ValueInvalidFormat": 'Invalid format',
+	"UI:ValueInvalidFormat": "Invalid format",
 	"UI:ValueMustBeSet": "Please specify a value",
 	"UI:ValueMustBeChanged": "Please change the value"
 };
