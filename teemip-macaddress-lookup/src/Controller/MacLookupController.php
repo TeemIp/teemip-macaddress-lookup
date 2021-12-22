@@ -34,15 +34,15 @@ class MacLookupController extends Controller {
 		$oAttDef = MetaModel::GetAttributeDef('IPInterface', $sAttCode);
 		$iFieldSize = $oAttDef->GetMaxSize();
 		$sPattern = addslashes($oAttDef->GetValidationPattern()); //'^([0-9]+)$';
-		$sValidationSpan = "<span class=\"form_validation ibo-field-validation\" id=\"v_{$sInputId}\"></span>";
-		$sReloadSpan = "<span class=\"field_status\" id=\"fstatus_{$sInputId}\"></span>";
+		$sValidationSpan = "<span class=\"form_validation ibo-field-validation\" id=\"v_$sInputId\"></span>";
+		$sReloadSpan = "<span class=\"field_status\" id=\"fstatus_$sInputId\"></span>";
 		$sHTMLValue = <<<HTML
 <div class="field_input_zone ibo-input-wrapper ibo-input-string-wrapper" data-validation="untouched">
-	<input class="ibo-input ibo-input-string" title="{$sHelpText}" type="text" maxlength="{$iFieldSize}" name="attr_{$sAttCode}" value="{$sDisplayValueForHtml}" id="{$sInputId}" />
+	<input class="ibo-input ibo-input-string" title="$sHelpText" type="text" maxlength="$iFieldSize" name="attr_$sAttCode" value="$sDisplayValueForHtml" id="$sInputId" />
 </div>
-{$sValidationSpan}{$sReloadSpan}
+$sValidationSpan$sReloadSpan
 HTML;
-		$sHTMLValue = "<div id=\"field_{$sInputId}\" class=\"field_value_container\"><div class=\"attribute-edit\" data-attcode=\"{$sAttCode}\">{$sHTMLValue}</div></div>";
+		$sHTMLValue = "<div id=\"field_$sInputId\" class=\"field_value_container\"><div class=\"attribute-edit\" data-attcode=\"$sAttCode\">$sHTMLValue</div></div>";
 		$val = array(
 			'label' => '<span  >'.$sAttLabel.'</span>',
 			'value' => $sHTMLValue,
@@ -57,15 +57,15 @@ HTML;
 		$sInputId = $iFormId.'_'.$sAttCode;
 		$iFieldSize = 17;
 		$sPattern = addslashes('^(\d|([a-f]|[A-F])){6}$'); //'^([0-9]+)$';
-		$sValidationSpan = "<span class=\"form_validation ibo-field-validation\" id=\"v_{$sInputId}\"></span>";
-		$sReloadSpan = "<span class=\"field_status\" id=\"fstatus_{$sInputId}\"></span>";
+		$sValidationSpan = "<span class=\"form_validation ibo-field-validation\" id=\"v_$sInputId\"></span>";
+		$sReloadSpan = "<span class=\"field_status\" id=\"fstatus_$sInputId\"></span>";
 		$sHTMLValue = <<<HTML
 <div class="field_input_zone ibo-input-wrapper ibo-input-string-wrapper" data-validation="untouched">
-	<input class="ibo-input ibo-input-string" title="{$sHelpText}" type="text" maxlength="{$iFieldSize}" name="attr_{$sAttCode}" value="{$sDisplayValueForHtml}" id="{$sInputId}" />
+	<input class="ibo-input ibo-input-string" title="$sHelpText" type="text" maxlength="$iFieldSize" name="attr_$sAttCode" value="$sDisplayValueForHtml" id="$sInputId" />
 </div>
-{$sValidationSpan}{$sReloadSpan}
+$sValidationSpan$sReloadSpan
 HTML;
-		$sHTMLValue = "<div id=\"field_{$sInputId}\" class=\"field_value_container\"><div class=\"attribute-edit\" data-attcode=\"{$sAttCode}\">{$sHTMLValue}</div></div>";
+		$sHTMLValue = "<div id=\"field_$sInputId\" class=\"field_value_container\"><div class=\"attribute-edit\" data-attcode=\"$sAttCode\">$sHTMLValue</div></div>";
 		$val = array(
 			'label' => '<span  >'.$sAttLabel.'</span>',
 			'value' => $sHTMLValue,
@@ -149,7 +149,7 @@ HTML;
 	 */
 	public function OperationMACAddressLookupFromCI() {
 		$sClass = utils::ReadParam('class', '', false, 'class');
-		$id = utils::ReadParam('id', '');
+		$id = utils::ReadParam('id');
 
 		// Check if right parameters have been given
 		if (empty($sClass) || empty($id)) {

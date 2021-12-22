@@ -21,6 +21,7 @@ class ComposerStaticInit330784e6328c3f366799fa517676032b
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Controller\\MacLookupController' => __DIR__ . '/../..' . '/src/Controller/MacLookupController.php',
         'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Hook\\MacLookupOtherActions' => __DIR__ . '/../..' . '/src/Hook/MacLookupOtherActions.php',
         'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Service\\MacLookupReport' => __DIR__ . '/../..' . '/src/Service/MacLookupReport.php',

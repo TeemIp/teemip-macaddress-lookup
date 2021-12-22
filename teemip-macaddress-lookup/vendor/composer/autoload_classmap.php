@@ -6,7 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-	'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Controller\\MacLookupController' => $baseDir.'/src/Controller/MacLookupController.php',
-	'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Hook\\MacLookupOtherActions' => $baseDir.'/src/Hook/MacLookupOtherActions.php',
-	'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Service\\MacLookupReport' => $baseDir.'/src/Service/MacLookupReport.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Controller\\MacLookupController' => $baseDir . '/src/Controller/MacLookupController.php',
+    'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Hook\\MacLookupOtherActions' => $baseDir . '/src/Hook/MacLookupOtherActions.php',
+    'TeemIp\\TeemIp\\Extension\\MACAddressLookup\\Service\\MacLookupReport' => $baseDir . '/src/Service/MacLookupReport.php',
 );
