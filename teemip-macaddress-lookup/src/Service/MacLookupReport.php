@@ -10,13 +10,14 @@ use Exception;
 use MetaModel;
 use utils;
 
-class MacLookupReport {
+class MacLookupReport
+{
 	const MACADDRESS_LOOKUP_MODULE_CODE = 'teemip-macaddress-lookup';
 	const MACADDRESS_LOOKUP_FUNCTION_SETTING_BASE_URL = 'url';
 	const DEFAULT_MACADDRESS_LOOKUP_FUNCTION_SETTING_BASE_URL = 'https://api.maclookup.app/v2/macs/%1$s';
 
 	protected $sMacToQuery = '';
-	protected $aResults = array();
+	protected $aResults = [];
 	protected $sResponse = '';
 
 	/**
@@ -24,21 +25,19 @@ class MacLookupReport {
 	 *
 	 * @param $sMacAddress
 	 */
-	public function __construct($sMacAddress) {
+	public function __construct($sMacAddress)
+	{
 		$this->sMacToQuery = $sMacAddress;
 
 		// Query info to "MAC Address Lookup" site
 		$sBaseUrl = MetaModel::GetModuleSetting(static::MACADDRESS_LOOKUP_MODULE_CODE, static::MACADDRESS_LOOKUP_FUNCTION_SETTING_BASE_URL, static::DEFAULT_MACADDRESS_LOOKUP_FUNCTION_SETTING_BASE_URL);
 		$sURL = sprintf($sBaseUrl, urlencode($sMacAddress));
-		$aEmpty = array();
+		$aEmpty = [];
 		$aCurlOptions = array(CURLOPT_POSTFIELDS => "");
-		try
-		{
-			$sResponse = utils::DoPostRequest($sURL, $aEmpty, null, $aEmpty, $aCurlOptions);
+		try {
+			$sResponse = utils::DoPostRequest($sURL, $aEmpty, '', $aEmpty, $aCurlOptions);
 			$this->aResults = json_decode($sResponse, true);
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			$this->sResponse = $e->getMessage();
 		}
 	}
@@ -46,7 +45,8 @@ class MacLookupReport {
 	/**
 	 * @return array
 	 */
-	public function GetReport() {
+	public function GetReport()
+	{
 		return array($this->aResults, $this->sResponse);
 	}
 }
