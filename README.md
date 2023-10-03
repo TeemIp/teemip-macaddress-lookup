@@ -1,4 +1,4 @@
-# <img src="https://wiki.teemip.net/lib/exe/fetch.php?media=extensions:macaddress.png"> TeemIp MAC Address Lookup
+# <img src="https://wiki.teemip.net/lib/exe/fetch.php?media=extensions:picto_macaddresslookup.png"> TeemIp MAC Address Lookup
 TeemIp extension that provides information on MAC address vendors
 
 
