@@ -4,7 +4,7 @@
  */
 
 /* This is a workaround to load the following dictionary entries in the page.
- *  These are normally loaded trough a $oPage->add_dict_entry() in cmdbabstract class
+ *  These are normally loaded through a $oPage->add_dict_entry() in cmdbabstract class
  */
 var aTeemIpDictEntries = {
 	"UI:ValueInvalidFormat": "Invalid format",
