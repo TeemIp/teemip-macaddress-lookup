@@ -1,6 +1,6 @@
 <?php
 /*
- * @copyright   Copyright (C) 2021 TeemIp
+ * @copyright   Copyright (C) 2010-2024 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -15,8 +15,18 @@ use MetaModel;
 use TeemIp\TeemIp\Extension\MACAddressLookup\Service\MacLookupReport;
 use utils;
 
-class MacLookupController extends Controller {
-	/**
+class MacLookupController extends Controller
+{
+    public const ROUTE_NAMESPACE = 'teemip-macaddress-lookup';
+
+    public function __construct($sViewPath = '', $sModuleName = 'core', $aAdditionalPaths = [])
+    {
+        //$sModuleName = 'teemip-macaddress-lookup'; Fails if set
+        $sViewPath = MODULESROOT.'teemip-macaddress-lookup/templates';
+        parent::__construct($sViewPath, $sModuleName, $aAdditionalPaths);
+    }
+
+    /**
 	 * @return array
 	 * @throws \Exception
 	 */
@@ -85,12 +95,11 @@ HTML;
 		$sTransactionId = utils::GetNewTransactionId();
 		$aParams['sTransactionId'] = $sTransactionId;
 
-//		$sClassIconUrl = MetaModel::GetClassIcon('IPv4Address', false);
-//		$aParams['sClassIconUrl'] = $sClassIconUrl;
-
 		$aActionFields = $this->GetActionFieldsForOperation();
 		$aParams = array_merge($aParams, $aActionFields);
 
+        $this->AddLinkedScript(utils::GetAbsoluteUrlModulesRoot().'teemip-macaddress-lookup/asset/js/teemip-macaddress-lookup.js');
+        $this->m_sOperation = 'MACAddressLookup';
 		$this->DisplayPage($aParams);
 	}
 
@@ -139,6 +148,7 @@ HTML;
 			$aParams['aResults'] = array($sMacToQuery => $aMACResults);
 		}
 
+        $this->m_sOperation = 'DoMACAddressLookup';
 		$this->DisplayPage($aParams);
 	}
 
@@ -191,6 +201,7 @@ HTML;
 				$aParams['bIssue'] = false;
 			}
 
+            $this->m_sOperation = 'MACAddressLookupFromCI';
 			$this->DisplayPage($aParams);
 		}
 	}

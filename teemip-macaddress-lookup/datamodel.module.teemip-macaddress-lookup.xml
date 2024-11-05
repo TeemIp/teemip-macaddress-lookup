@@ -4,7 +4,7 @@
         <menu id="MACLookup" xsi:type="WebPageMenuNode" _delta="define">>
             <rank>30</rank>
             <parent>IPTools</parent>
-            <url>$pages/exec.php?exec_module=teemip-macaddress-lookup&amp;exec_page=index.php&amp;c[menu]=MacLookup</url>
+            <url>$pages/UI.php?route=teemip-macaddress-lookup.mac_address_lookup</url>
         </menu>
     </menus>
 </itop_design>

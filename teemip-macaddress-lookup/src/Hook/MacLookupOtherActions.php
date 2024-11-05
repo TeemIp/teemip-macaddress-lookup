@@ -1,6 +1,6 @@
 <?php
 /*
- * @copyright   Copyright (C) 2021 TeemIp
+ * @copyright   Copyright (C) 2010-2024 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -41,11 +41,7 @@ class MacLookupOtherActions implements iPopupMenuExtension {
 				if ($bHasMacAddressAttribute) {
 					$oAppContext = new ApplicationContext();
 					$sContext = $oAppContext->GetForLink();
-
 					$id = $oObj->GetKey();
-					$aParams = $oAppContext->GetAsHash();
-					$aParams['class'] = $sClass;
-					$aParams['id'] = $id;
 
 					$operation = utils::ReadParam('operation', '');
 					switch ($operation) {
@@ -53,12 +49,11 @@ class MacLookupOtherActions implements iPopupMenuExtension {
 						case 'apply_modify':
 						case 'details':
 							$aResult[] = new SeparatorPopupMenuItem();
-							$aParams['operation'] = 'MACAddressLookupFromCI';
 							$sMenu = 'UI:MACLookup:Action:CI:Lookup';
-							$aResult[] = new URLPopupMenuItem($sMenu, Dict::S($sMenu), utils::GetAbsoluteUrlModulePage('teemip-macaddress-lookup', 'index.php', $aParams));
+                            $aResult[] = new URLPopupMenuItem($sMenu, Dict::S($sMenu), utils::GetAbsoluteUrlAppRoot()."pages/UI.php?route=teemip-macaddress-lookup.mac_address_lookup_from_ci&class=$sClass&id=$id&$sContext");
 							break;
 
-						case 'maclookupfromci':
+						case 'macaddresslookupfromci':
 							$aResult[] = new SeparatorPopupMenuItem();
 							$sMenu = 'UI:MACLookup:Action:CI:Details';
 							$aResult[] = new URLPopupMenuItem($sMenu, Dict::S($sMenu), utils::GetAbsoluteUrlAppRoot()."pages/UI.php?operation=details&class=$sClass&id=$id&$sContext");

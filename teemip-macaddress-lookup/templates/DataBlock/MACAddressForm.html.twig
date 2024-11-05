@@ -3,7 +3,7 @@
 
 {% UIContentBlock Standard {} %}
 	{% UIFieldSet Standard {'sLegend':'UI:MACLookup:Action:Lookup:Helper'|dict_s} %}
-		{% UIInput ForHidden {'sName':'operation', 'sValue':'DoMACAddressLookup'} %}
+		{% UIInput ForHidden {'sName':'route', 'sValue':'teemip-macaddress-lookup.do_mac_address_lookup'} %}
 		{% UIInput ForHidden {'sName':'transaction_id', 'sValue':sTransactionId} %}
 
 		{% UIContentBlock Standard {'aContainerClasses':['ibo-field']} %}
